@@ -1,5 +1,6 @@
 const express = require("express");
 const authRouters = require("./routes/auth-routes");
+const profileRouters = require("./routes/profile-routes");
 const passportSetup = require("./config/passport-setup");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
@@ -36,10 +37,11 @@ mongoose.connect(
 
 // set up routes
 app.use("/auth", authRouters);
+app.use("/profile", profileRouters);
 
 // create home route
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", { user: req.user });
 });
 
 app.listen(3001, () => {

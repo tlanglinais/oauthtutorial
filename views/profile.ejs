@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login</title>
+    <title>OAuth Tutorial</title>
     <style>
       body {
         font-family: arial;
@@ -39,13 +39,6 @@
         padding: 0 10px;
         color: #333;
       }
-      .google-btn {
-        color: #fff;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 10px;
-        background: #ff5353;
-      }
     </style>
   </head>
   <body>
@@ -60,11 +53,14 @@
         <li><a href="/profile">Profile</a></li>
       </ul>
     </nav>
+
     <header>
-      <h1>Login using...</h1>
+      <h1>Welcome <%= user.username %></h1>
+      <h2>Homepage</h2>
     </header>
     <main>
-      <a href="/auth/github" class="google-btn">Github</a>
+      <img src="<%= user.thumbnail %>" />
+      <p>Let's learn how OAuth works</p>
     </main>
   </body>
 </html>

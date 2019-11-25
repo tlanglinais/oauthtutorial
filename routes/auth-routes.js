@@ -3,13 +3,14 @@ const passport = require("passport");
 
 // auth login
 router.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { user: req.user });
 });
 
 // auth logout
 router.get("/logout", (req, res) => {
   // handle with passport
-  res.send("logging out");
+  req.logout();
+  res.redirect("/");
 });
 
 // auth with google
@@ -21,9 +22,10 @@ router.get(
 );
 
 // callback route for github to redirect to
-router.get("/github/redirect", passport.authenticate("github"), (req, res) => [
+router.get("/github/redirect", passport.authenticate("github"), (req, res) => {
   // res.send(req.user)
-  res.redirect("/profile")
-]);
+  // console.log(req.user);
+  res.redirect("/profile");
+});
 
 module.exports = router;
